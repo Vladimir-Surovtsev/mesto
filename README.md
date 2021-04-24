@@ -12,7 +12,7 @@ ___________________________
 
 4. BEM
 
-5. Проект размещен по адресу: https://vladimir-surovtsev.github.io/mesto
+5. Проект размещен по адресу: https://vladimir-surovtsev.github.io/mesto/
 
 ___________________________
 
