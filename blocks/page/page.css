@@ -1,0 +1,12 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    font-family: 'inter', Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    max-width: 880px;
+    margin: 0 auto;
+}
