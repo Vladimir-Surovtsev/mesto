@@ -1,8 +1,6 @@
 .profile__edit-button {
+    margin-top: 40px;
     display: flex;
-    position: absolute;
-    top: 37px;
-    right: 0;
     padding: 0;
     box-sizing: border-box;
     width: 24px;

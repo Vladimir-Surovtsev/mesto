@@ -1,7 +1,4 @@
 .elements__like {
-    float: right;
-    padding-top: 26px;
-    padding-right: 21px;
     transition: .3s;
 }
 
@@ -10,6 +7,6 @@
 }
 
 .elements__like:active {
-    background-image: url(./images/fill_heart.svg);
+    background-image: url(../../../images/fill_heart.svg);
     background-repeat: no-repeat;
 }
