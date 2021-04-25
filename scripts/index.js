@@ -13,10 +13,14 @@ let profileSubtitle = document.querySelector('.profile__subtitle');
 //     popup.classList.toggle('popup_is-opened');        --функция с переключателем
 // }
 
-function openPopup() {
-    popup.classList.add('popup_is-opened');
+function fillingValue() {
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
+}
+
+function openPopup() {
+    popup.classList.add('popup_is-opened');
+    fillingValue();
 }
 
 function closePopup() {
@@ -30,8 +34,7 @@ function closePopup() {
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
-    profileTitle.textContent = nameInput.value;
-    profileSubtitle.textContent = jobInput.value;
+    fillingValue();
     // togglePopup();
     closePopup();
 }
