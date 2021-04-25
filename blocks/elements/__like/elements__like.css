@@ -1,5 +1,12 @@
 .elements__like {
+    background-image: url(../../../images/heart.svg);
+    background-repeat: no-repeat;
+    background-color: #fff;
     transition: .3s;
+    width: 22px;
+    border: none;
+    margin-top: 26px;
+    cursor: pointer;
 }
 
 .elements__like:hover {
@@ -8,5 +15,4 @@
 
 .elements__like:active {
     background-image: url(../../../images/fill_heart.svg);
-    background-repeat: no-repeat;
 }
