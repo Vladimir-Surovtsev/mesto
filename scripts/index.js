@@ -20,7 +20,9 @@ function fillingValue() {
 
 function openPopup() {
     popup.classList.add('popup_is-opened');
-    fillingValue();
+    nameInput.value = profileTitle.textContent;
+    jobInput.value = profileSubtitle.textContent;
+    // fillingValue();
 }
 
 function closePopup() {
@@ -47,7 +49,5 @@ formElement.addEventListener('submit', formSubmitHandler);
 // openPopupButton.addEventListener('click', togglePopup);
 
 // closePopupButton.addEventListener('click', togglePopup);
-
-openPopupButton.addEventListener('click', openPopup);
 
 closePopupButton.addEventListener('click', closePopup);

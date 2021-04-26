@@ -1,8 +1,9 @@
 .profile__add-button {
     width: 148px;
     height: 48px;
-    background-color: #000;
+    background-color: transparent;
     border: 2px solid #fff;
+    border-radius: 2px;
     align-self: center;
     margin-left: auto;
     transition: .3s;

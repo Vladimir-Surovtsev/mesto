@@ -1,7 +1,7 @@
 .elements__like {
     background-image: url(../../../images/heart.svg);
     background-repeat: no-repeat;
-    background-color: #fff;
+    background-color: transparent;
     transition: .3s;
     width: 22px;
     border: none;
