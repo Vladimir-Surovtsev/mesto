@@ -3,6 +3,7 @@
     flex-direction: row;
     color: #fff;
     padding-top: 38px;
+    padding-bottom: 54px;
 }
 
 @media screen and (max-width: 744px) {
@@ -10,5 +11,6 @@
         flex-direction: column;
         align-items: center;
         padding-top: 40px;
+        padding-bottom: 38px;
     }
 }
