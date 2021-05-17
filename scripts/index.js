@@ -66,7 +66,7 @@ function kreatePlace(evt) {
     massImage.src = linkInput.value;
     massImage.alt = placeInput.value;
     massTitle.textContent = placeInput.value;
-    cardsContainer.append(userElement);
+    cardsContainer.prepend(userElement);
     closePopup();
 }
 
