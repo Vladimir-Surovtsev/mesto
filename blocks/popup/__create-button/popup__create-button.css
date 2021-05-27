@@ -1,4 +1,4 @@
-.popup__kreate-button {
+.popup__create-button {
     width: 358px;
     height: 50px;
     background-color: black;
@@ -12,12 +12,12 @@
     cursor: pointer;
 }
 
-.popup__kreate-button:hover {
+.popup__create-button:hover {
     opacity: .8;
 }
 
 @media screen and (max-width: 640px) {
-    .popup__kreate-button {
+    .popup__create-button {
         width: 238px;
         height: 46px;
         font-size: 14px;
