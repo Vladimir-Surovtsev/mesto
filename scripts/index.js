@@ -17,7 +17,7 @@ const popupTitleImage = document.querySelector('.popup__title-image');
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeNewCard = document.querySelector('.popup_type_new-card');
 const popupTypeImage = document.querySelector('.popup_type_image');
-const popupTypeContentUsers = document.querySelector('.popup_type_content');
+const popupTypeContentUsers = document.querySelector('.popup_type_content-users');
 const userTemplate = document.querySelector('#user').content;
 
 function fillCard() {
