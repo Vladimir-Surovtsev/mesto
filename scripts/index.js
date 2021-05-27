@@ -14,16 +14,16 @@ const createButton = document.querySelector('#two');
 const trashButton = document.querySelectorAll('.elements__trash');
 const popupImage = document.querySelector('.popup__image');
 const popupTitleImage = document.querySelector('.popup__title-image');
-const popupTypeEdit = document.querySelector('.popup_edit');
-const popupTypeNewCard = document.querySelector('.popup_new-card');
-const popupTypeImage = document.querySelector('.popup_new-image');
-const popupTypeContentUsers = document.querySelector('.popup_content-users');
+const popupTypeEdit = document.querySelector('.popup__popup_type_edit');
+const popupTypeNewCard = document.querySelector('.popup__popup_type_new-card');
+const popupTypeImage = document.querySelector('.popup__popup_type_image');
+const popupTypeContentUsers = document.querySelector('.popup__popup_type_content-users');
 const userTemplate = document.querySelector('#user').content;
-const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
-const massImage = userElement.querySelector('.elements__image');
-const massTitle = userElement.querySelector('.elements__title');
 
 function fillCard() {
+    const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
+    const massImage = userElement.querySelector('.elements__image');
+    const massTitle = userElement.querySelector('.elements__title');
     massImage.src = linkInput.value;
     massImage.alt = placeInput.value;
     massTitle.textContent = placeInput.value;
@@ -32,8 +32,7 @@ function fillCard() {
 
 function createCard(evt) {
     evt.preventDefault();
-    fillCard();
-    cardsContainer.prepend(userElement);
+    cardsContainer.prepend(fillCard());
     popupTypeContentUsers.reset();
     closePopup();
 }
