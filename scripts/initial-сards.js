@@ -26,11 +26,12 @@ const initialCards = [{
 
 const cardsContainer = document.querySelector('.elements');
 const userTemplate = document.querySelector('#user').content;
+const cardElement = userTemplate.querySelector('.elements__element');
+const massImage = cardElement.querySelector('.elements__image');
+const massTitle = cardElement.querySelector('.elements__title');
 
 function fillCards(el) {
-    const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
-    const massImage = userElement.querySelector('.elements__image');
-    const massTitle = userElement.querySelector('.elements__title');
+    const userElement = cardElement.cloneNode(true);
     massImage.alt = el.name;
     massTitle.textContent = el.name;
     massImage.src = el.link;
