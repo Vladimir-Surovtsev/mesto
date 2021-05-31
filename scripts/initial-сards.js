@@ -25,16 +25,18 @@ const initialCards = [{
 ];
 
 const cardsContainer = document.querySelector('.elements');
+const userTemplate = document.querySelector('#user').content;
 
+function fillCards(el) {
+    const userElement = userTemplate.querySelector('.elements__element').cloneNode(true);
+    const massImage = userElement.querySelector('.elements__image');
+    const massTitle = userElement.querySelector('.elements__title');
+    massImage.alt = el.name;
+    massTitle.textContent = el.name;
+    massImage.src = el.link;
+    return userElement;
+}
 
 initialCards.forEach((el) => {
-    cardsContainer.insertAdjacentHTML('beforeend', `            <li class="elements__element">
-    <img class="elements__image" src="${el.link}" alt="${el.name}">
-    <button type="button" class="elements__trash" aria-label="Корзина"></button>
-    <div class="elements__body">
-        <h2 class="elements__title">${el.name}</h2>
-        <button type="button" class="elements__like" aria-label="Нравиться"></button>
-    </div>
-</li>`)
-    return
-})
+    cardsContainer.append(fillCards(el));
+});

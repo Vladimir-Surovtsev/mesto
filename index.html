@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <meta name="description" content="Сервис, куда можно добавлять фотографии, удалять их и ставить лайки.">
     <meta name="author" content="Владимир Суровцев">
 </head>
+
 <body class="page">
     <header class="header">
         <img src="./images/logo.svg" alt="Логотип" class="header__logo">
@@ -34,46 +36,51 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_type_edit">
-        <div class="popup__forms" id="one">
-            <button type="button" class="popup__close" aria-label="Закрыть"></button>
-            <form name="edit-profile-form" class="popup__content">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <input name="name" type="text" class="popup__value popup__value_text_name" value="Жак-Ив Кусто">
-                <input name="job" type="text" class="popup__value popup__value_text_job" value="Исследователь океана">
-                <button type="submit" class="popup__save-button">Сохранить</button>
-            </form>
+    <div class="popups">
+        <div class="popup popup_type_edit">
+            <div class="popup__forms" id="editForm">
+                <button type="button" class="popup__close" aria-label="Закрыть"></button>
+                <form name="edit-profile-form" class="popup__content">
+                    <h2 class="popup__title">Редактировать профиль</h2>
+                    <input name="name" type="text" class="popup__value popup__value_text_name" value="Жак-Ив Кусто">
+                    <input name="job" type="text" class="popup__value popup__value_text_job"
+                        value="Исследователь океана">
+                    <button type="submit" class="popup__save-button">Сохранить</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="popup popup_type_new-card">
-        <div class="popup__forms" id="two">
-            <button type="button" class="popup__close" aria-label="Закрыть"></button>
-            <form name="add-content-users" class="popup__content" id="popup_type_content-users">
-                <h2 class="popup__title">Новое место</h2>
-                <input name="place" type="text" class="popup__value popup__value_text_place" placeholder="Название">
-                <input name="image-link" type="text" class="popup__value popup__value_text_image-link" placeholder="Ссылка на картинку">
-                <button type="submit" class="popup__create-button">Создать</button>
-            </form>
+        <div class="popup popup_type_new-card">
+            <div class="popup__forms" id="addDiv">
+                <button type="button" class="popup__close" aria-label="Закрыть"></button>
+                <form name="add-content-users" class="popup__content" id="addForm">
+                    <h2 class="popup__title">Новое место</h2>
+                    <input name="place" type="text" class="popup__value popup__value_text_place" placeholder="Название">
+                    <input name="image-link" type="text" class="popup__value popup__value_text_image-link"
+                        placeholder="Ссылка на картинку">
+                    <button type="submit" class="popup__create-button">Создать</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="popup popup_type_image">
-        <div class="popup__big-image">
-            <button type="button" class="popup__close" aria-label="Закрыть"></button>
-            <img src="./images/kusto.jpg" alt="демо" class="popup__image">
-            <p class="popup__title-image"></p>
+        <div class="popup popup_type_image">
+            <div class="popup__big-image">
+                <button type="button" class="popup__close" aria-label="Закрыть"></button>
+                <img src="./images/kusto.jpg" alt="демо" class="popup__image">
+                <p class="popup__title-image"></p>
+            </div>
         </div>
     </div>
     <template id="user">
-            <li class="elements__element">
-                <img class="elements__image" src="./images/kusto.jpg" alt="демо">
-                <button type="button" class="elements__trash" aria-label="Корзина"></button>
-                <div class="elements__body">
-                    <h2 class="elements__title"></h2>
-                    <button type="button" class="elements__like" aria-label="Нравиться"></button>
-                </div>
-            </li>
+        <li class="elements__element">
+            <img class="elements__image" src="./images/kusto.jpg" alt="демо">
+            <button type="button" class="elements__trash" aria-label="Корзина"></button>
+            <div class="elements__body">
+                <h2 class="elements__title"></h2>
+                <button type="button" class="elements__like" aria-label="Нравиться"></button>
+            </div>
+        </li>
     </template>
     <script src="./scripts/initial-сards.js"></script>
     <script src="./scripts/index.js" defer></script>
 </body>
+
 </html>
