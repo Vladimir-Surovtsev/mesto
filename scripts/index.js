@@ -24,19 +24,14 @@ const popupTypeImage = popups.querySelector('.popup_type_image');
 const popupImage = popupTypeImage.querySelector('.popup__image');
 const popupTitleImage = popupTypeImage.querySelector('.popup__title-image');
 
-const cardTemplate = userTemplate.querySelector('.elements__element');
-
-// const massImage = cardTemplate.querySelector('.elements__image');
-// const massTitle = cardTemplate.querySelector('.elements__title');      не так
-// const likeButton = cardTemplate.querySelector('.elements__like');
-// const deleteButton = cardTemplate.querySelector('.elements__trash');
+const userElement = userTemplate.querySelector('.elements__element');
 
 function getCard(el) {
-    const userElement = cardTemplate.cloneNode(true);
-    const massImage = cardTemplate.querySelector('.elements__image');
-    const massTitle = cardTemplate.querySelector('.elements__title');   // не так
-    const likeButton = cardTemplate.querySelector('.elements__like');
-    const deleteButton = cardTemplate.querySelector('.elements__trash');
+    userElement.cloneNode(true);
+    const massImage = userElement.querySelector('.elements__image');
+    const massTitle = userElement.querySelector('.elements__title');
+    const likeButton = userElement.querySelector('.elements__like');
+    const deleteButton = userElement.querySelector('.elements__trash');
     likeButton.addEventListener('click', handleLikeIcon);
     deleteButton.addEventListener('click', handleDeleteCard);
     massImage.addEventListener('click', () => handlePreviewPicture(el));
