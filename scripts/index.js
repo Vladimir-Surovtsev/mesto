@@ -3,6 +3,7 @@ const openPopupEditButton = document.querySelector('.profile__edit-button');
 const openPopupAddButton = document.querySelector('.profile__add-button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
+
 const cardsContainer = document.querySelector('.elements');
 const userTemplate = document.querySelector('#user').content;
 
@@ -27,18 +28,18 @@ const popupTitleImage = popupTypeImage.querySelector('.popup__title-image');
 const userElement = userTemplate.querySelector('.elements__element');
 
 function getCard(el) {
-    userElement.cloneNode(true);
-    const massImage = userElement.querySelector('.elements__image');
-    const massTitle = userElement.querySelector('.elements__title');
-    const likeButton = userElement.querySelector('.elements__like');
-    const deleteButton = userElement.querySelector('.elements__trash');
+    const cardElement = userElement.cloneNode(true);
+    const massImage = cardElement.querySelector('.elements__image');
+    const massTitle = cardElement.querySelector('.elements__title');
+    const likeButton = cardElement.querySelector('.elements__like');
+    const deleteButton = cardElement.querySelector('.elements__trash');
     likeButton.addEventListener('click', handleLikeIcon);
     deleteButton.addEventListener('click', handleDeleteCard);
     massImage.addEventListener('click', () => handlePreviewPicture(el));
     massImage.alt = el.name;
     massTitle.textContent = el.name;
     massImage.src = el.link;
-    return userElement;
+    return cardElement;
 }
 
 initialCards.forEach((el) => {
