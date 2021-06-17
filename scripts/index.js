@@ -22,10 +22,29 @@ const placeInput = popupTypeNewCard.querySelector('.popup__value_text_place');
 const linkInput = popupTypeNewCard.querySelector('.popup__value_text_image-link');
 
 const popupTypeImage = popups.querySelector('.popup_type_image');
+const closePopupImage = popupTypeImage.querySelector('.popup__close');
 const popupImage = popupTypeImage.querySelector('.popup__image');
 const popupTitleImage = popupTypeImage.querySelector('.popup__title-image');
 
 const userElement = userTemplate.querySelector('.elements__element');
+
+const closePopupOverlay = () => {
+    const popupList = Array.from(popups.querySelectorAll('.popup'));
+    popupList.forEach((popupElement) => {
+        popupElement.addEventListener('click', function (evt) {
+            if (evt.target === evt.currentTarget) {
+                closePopup(popupElement);
+            }
+        });
+        popupElement.addEventListener('keydown', function (evt) {
+            if (evt.key === 'Escape') {
+                closePopup(popupElement);
+            }
+        });
+    });
+}
+
+closePopupOverlay();
 
 function getCard(el) {
     const cardElement = userElement.cloneNode(true);
@@ -98,7 +117,7 @@ openPopupEditButton.addEventListener('click', openEditPopup);
 
 openPopupAddButton.addEventListener('click', openAddPopup);
 
-popupTypeImage.addEventListener('click', () => closePopup(popupTypeImage));
+closePopupImage.addEventListener('click', () => closePopup(popupTypeImage));
 
 closePopupEditButton.addEventListener('click', () => closePopup(popupTypeEdit));
 
