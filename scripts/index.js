@@ -13,13 +13,13 @@ const popupTypeContentUsers = popups.querySelector('#addForm');
 
 const popupTypeEdit = popups.querySelector('.popup_type_edit');
 const closePopupEditButton = popupTypeEdit.querySelector('.popup__close');
-const nameInput = popupTypeEdit.querySelector('.popup__input_text_name');
-const jobInput = popupTypeEdit.querySelector('.popup__input_text_job');
+const nameInput = popupTypeEdit.querySelector('#name-input');
+const jobInput = popupTypeEdit.querySelector('#job-input');
 
 const popupTypeNewCard = popups.querySelector('.popup_type_new-card');
 const closePopupAddButton = popupTypeNewCard.querySelector('.popup__close');
-const placeInput = popupTypeNewCard.querySelector('.popup__input_text_place');
-const linkInput = popupTypeNewCard.querySelector('.popup__input_text_image-link');
+const placeInput = popupTypeNewCard.querySelector('#place-input');
+const linkInput = popupTypeNewCard.querySelector('#image-link-input');
 
 const popupTypeImage = popups.querySelector('.popup_type_image');
 const closePopupImage = popupTypeImage.querySelector('.popup__close');
