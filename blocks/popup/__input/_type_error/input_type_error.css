@@ -1,4 +1,4 @@
-.popup__input_type_error {
+.input_type_error {
     position: absolute;
     opacity: 0;
     width: 358px;
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 640px) {
-    .popup__input_type_error {
+    .input_type_error {
         width: 238px;
         left: 22px;
     }
