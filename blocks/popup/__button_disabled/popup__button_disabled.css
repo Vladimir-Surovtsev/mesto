@@ -1,5 +1,6 @@
 .popup__button_disabled {
     opacity: .2;
+    cursor: default;
 }
 
 .popup__button_disabled:hover {
