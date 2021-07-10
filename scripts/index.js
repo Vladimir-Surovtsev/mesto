@@ -2,7 +2,7 @@ import Card from './Card.js';
 import {
     initialCards
 } from './initial-сards.js';
-import FormValidater from './FormValidater.js';
+import FormValidator from './FormValidator.js';
 
 const popups = document.querySelector('.popups');
 
@@ -47,12 +47,20 @@ function closeByOverlay() {
 
 closeByOverlay();
 
-initialCards.forEach((item) => {
-    const card = new Card(item, '.elements');
+function getNewCard(item) {
+    const card = new Card(item, '#user');
     const cardElement = card.generateCard();
+    return cardElement;
+}
 
-    cardsContainer.append(cardElement);
+initialCards.forEach((item) => {
+    cardsContainer.append(getNewCard(item));
 });
+
+export function disableButton() {
+    popupCreateButton.classList.add('popup__button_disabled');
+    popupCreateButton.setAttribute("disabled", "true");
+}
 
 function createCard(evt) {
     evt.preventDefault();
@@ -60,33 +68,22 @@ function createCard(evt) {
         name: placeInput.value,
         link: linkInput.value
     };
-    const card = new Card(item, '.elements');
-    const cardElement = card.generateCard();
-    cardsContainer.prepend(cardElement);
+    cardsContainer.prepend(getNewCard(item));
     popupTypeContentUsers.reset();
     closePopup(popupTypeNewCard);
-    popupCreateButton.classList.add('popup__button_disabled');
-    popupCreateButton.setAttribute("disabled", "true");
+    disableButton();
 }
 
-const addFormEl = new FormValidater(obj, popupTypeContentUsers);
+const addFormEl = new FormValidator(obj, popupTypeContentUsers);
 addFormEl.enableValidation();
 
-const editProfile = new FormValidater(obj, editFormElement);
+const editProfile = new FormValidator(obj, editFormElement);
 editProfile.enableValidation();
 
 function keyDown(evt) {
     const openedPopup = document.querySelector('.popup_is-opened');
     if (evt.key === 'Escape') {
         closePopup(openedPopup);
-    }
-    if (evt.key === 'Enter') {
-        if (openedPopup === popupTypeEdit) {
-            formSubmitHandler(evt);
-        }
-        if (openedPopup === popupTypeNewCard) {
-            createCard(evt);
-        }
     }
 }
 

@@ -15,11 +15,10 @@ export default class Card {
 
     _getTemplate() {
         const cardElement = document
-            .querySelector('#user')
+            .querySelector(`${ this._cardSelector }`)
             .content
             .querySelector('.elements__element')
             .cloneNode(true);
-
         return cardElement;
     }
 
@@ -51,7 +50,7 @@ export default class Card {
     }
 
     _handleDeleteCard() {
-        this._element.querySelector('.elements__trash').closest('.elements__element').remove();
+        this._element.remove();
     }
 
     _handlePreviewPicture() {
