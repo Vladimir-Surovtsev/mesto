@@ -24,7 +24,6 @@ const jobInput = document.querySelector('#job-input');
 const popupTypeNewCard = document.querySelector('.popup_type_new-card');
 const placeInput = document.querySelector('#place-input');
 const linkInput = document.querySelector('#image-link-input');
-const popupCreateButton = document.querySelector('.popup__create-button');
 
 export const obj = {
     inputSelector: '.popup__input',
@@ -57,11 +56,6 @@ initialCards.forEach((item) => {
     cardsContainer.append(getNewCard(item));
 });
 
-export function disableButton() {
-    popupCreateButton.classList.add('popup__button_disabled');
-    popupCreateButton.setAttribute("disabled", "true");
-}
-
 function createCard(evt) {
     evt.preventDefault();
     const item = {
@@ -71,7 +65,7 @@ function createCard(evt) {
     cardsContainer.prepend(getNewCard(item));
     popupTypeContentUsers.reset();
     closePopup(popupTypeNewCard);
-    disableButton();
+    addFormEl.disableButton();
 }
 
 const addFormEl = new FormValidator(obj, popupTypeContentUsers);
