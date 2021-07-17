@@ -1,10 +1,7 @@
-const popupImage = document.querySelector('.popup__image');
-const popupTitleImage = document.querySelector('.popup__title-image');
-const popupTypeImage = document.querySelector('.popup_type_image');
-
+import PopupWithImage from './PopupWithImage.js';
 import {
-    openPopup
-} from './index.js';
+    popupTypeImage
+} from '../utils/constants.js';
 
 export default class Card {
     constructor(data, cardSelector) {
@@ -40,8 +37,9 @@ export default class Card {
         this._element.querySelector('.elements__trash').addEventListener('click', () => {
             this._handleDeleteCard();
         });
-        this._element.querySelector('.elements__image').addEventListener('click', () => {
-            this._handlePreviewPicture();
+        this._element.querySelector('.elements__image').addEventListener('click', (evt) => {
+            const preview = new PopupWithImage(popupTypeImage);
+            preview.handlePreviewPicture(evt);
         });
     }
 
@@ -51,12 +49,5 @@ export default class Card {
 
     _handleDeleteCard() {
         this._element.remove();
-    }
-
-    _handlePreviewPicture() {
-        popupImage.src = this._link;
-        popupImage.alt = this._name;
-        popupTitleImage.textContent = this._name;
-        openPopup(popupTypeImage);
     }
 }
