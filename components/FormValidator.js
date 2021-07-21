@@ -40,10 +40,10 @@ export default class FormValidator {
         });
     }
 
-    disableButton () {
-        this._buttonElement.classList.add(this._inactiveButtonClass); 
+    disableButton() {
+        this._buttonElement.classList.add(this._inactiveButtonClass);
         this._buttonElement.setAttribute('disabled', 'true');
-      }
+    }
 
     _toggleButtonState() {
         if (this._hasInvalidInput()) {

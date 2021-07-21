@@ -1,13 +1,9 @@
-import PopupWithImage from './PopupWithImage.js';
-import {
-    popupTypeImage
-} from '../utils/constants.js';
-
 export default class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this.handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -37,9 +33,8 @@ export default class Card {
         this._element.querySelector('.elements__trash').addEventListener('click', () => {
             this._handleDeleteCard();
         });
-        this._element.querySelector('.elements__image').addEventListener('click', (evt) => {
-            const preview = new PopupWithImage(popupTypeImage);
-            preview.handlePreviewPicture(evt);
+        this._element.querySelector('.elements__image').addEventListener('click', () => {
+            this.handleCardClick(this._element.querySelector('.elements__image'));
         });
     }
 
