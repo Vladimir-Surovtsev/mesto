@@ -1,4 +1,4 @@
-import '../pages/index.css';
+import './pages/index.css';
 
 import {
     initialCards,
@@ -12,15 +12,14 @@ import {
     openPopupAddButton,
     popupTypeImage,
     obj
-} from '../utils/constants.js';
+} from './utils/constants.js';
 
-import Card from '../components/Card.js';
-import Section from '../components/Section.js';
-import FormValidator from '../components/FormValidator.js';
-import UserInfo from '../components/UserInfo.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import Popup from '../components/Popup.js';
+import Card from './components/Card.js';
+import Section from './components/Section.js';
+import FormValidator from './components/FormValidator.js';
+import UserInfo from './components/UserInfo.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import PopupWithImage from './components/PopupWithImage.js';
 
 function createNewCard(item) {
     const card = new Card(item, '#user', handleCardClick);
@@ -37,12 +36,11 @@ const cardList = new Section({
 
 cardList.renderItems();
 
-const set = new Popup(popupTypeImage);
-set.setEventListeners();
+const preview = new PopupWithImage(popupTypeImage);
+preview.setEventListeners();
 
 function handleCardClick(data) {
-    const preview = new PopupWithImage(data, popupTypeImage);
-    preview.openPopup();
+    preview.openPopup(data, popupTypeImage);
 }
 
 const formAdd = new PopupWithForm(popupTypeNewCard, createCard);
@@ -76,12 +74,8 @@ const user = new UserInfo({
 function openEditPopup() {
     formEdit.openPopup();
     const userInfo = user.getUserInfo();
-
-    function editeInputs(userInfo) {
-        nameInput.value = userInfo.name;
-        jobInput.value = userInfo.job;
-    }
-    editeInputs(userInfo);
+    nameInput.value = userInfo.name;
+    jobInput.value = userInfo.job;
 }
 
 const formEdit = new PopupWithForm(popupTypeEdit, closeEditPopup);
