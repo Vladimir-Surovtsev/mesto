@@ -4,8 +4,9 @@
     background-color: transparent;
     transition: .3s;
     width: 22px;
+    height: 19px;
     border: none;
-    margin-top: 26px;
+    margin: 22px auto 3px;
     cursor: pointer;
 }
 
