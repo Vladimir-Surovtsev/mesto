@@ -1,4 +1,4 @@
-import './index.css';
+import './pages/index.css';
 
 import {
     editFormElement,
@@ -17,19 +17,21 @@ import {
     addBtn,
     avatarBtn,
     obj
-} from '../utils/constants.js';
+} from './utils/constants.js';
 
-import Api from '../components/Api.js';
-import Card from '../components/Card.js';
-import Section from '../components/Section.js';
-import FormValidator from '../components/FormValidator.js';
-import UserInfo from '../components/UserInfo.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import Popup from '../components/Popup.js';
+import Api from './components/Api.js';
+import Card from './components/Card.js';
+import Section from './components/Section.js';
+import FormValidator from './components/FormValidator.js';
+import UserInfo from './components/UserInfo.js';
+import PopupWithForm from './components/PopupWithForm.js';
+import PopupWithImage from './components/PopupWithImage.js';
+import Popup from './components/Popup.js';
 
 const api = new Api();
 const closeEdit = new Popup(popupTypeEdit);
+
+// function toggleLike(id, realLike) {}
 
 function createNewCard(item, myId) {
     const card = new Card(item, '#user', handleCardClick, handleAccept);
@@ -42,9 +44,7 @@ function createNewCard(item, myId) {
             cardElement.querySelector('.elements__like-counter').textContent = realLike + 1;
         } else {
             api.deleteLike(id);
-            if (realLike > 0) {
-                cardElement.querySelector('.elements__like-counter').textContent = (realLike - 1);
-            }
+                cardElement.querySelector('.elements__like-counter').textContent = (realLike);
         }
     });
     return cardElement;
