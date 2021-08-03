@@ -31,8 +31,6 @@ import Popup from './components/Popup.js';
 const api = new Api();
 const closeEdit = new Popup(popupTypeEdit);
 
-// function toggleLike(id, realLike) {}
-
 function createNewCard(item, myId) {
     const card = new Card(item, '#user', handleCardClick, handleAccept);
     const cardElement = card.generateCard(myId);
@@ -44,7 +42,7 @@ function createNewCard(item, myId) {
             cardElement.querySelector('.elements__like-counter').textContent = realLike + 1;
         } else {
             api.deleteLike(id);
-                cardElement.querySelector('.elements__like-counter').textContent = (realLike);
+            cardElement.querySelector('.elements__like-counter').textContent = (realLike);
         }
     });
     return cardElement;
