@@ -1,3 +1,5 @@
+import { Esc } from "../utils/constants.js";
+
 export default class Popup {
     constructor(popup) {
         this._popup = popup;
@@ -15,7 +17,7 @@ export default class Popup {
     }
 
     _handleEscClose(evt) {
-        if (evt.key === 'Escape') {
+        if (evt.key === Esc) {
             this.closePopup();
         }
     }
