@@ -1,6 +1,4 @@
 export const profileEditBtn = document.querySelector('.profile__edit-button');
-export const profileTitle = document.querySelector('.profile__title');
-export const profileSubtitle = document.querySelector('.profile__subtitle');
 
 export const likesCounterSelector = '.elements__like-counter';
 

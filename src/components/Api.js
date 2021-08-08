@@ -1,7 +1,5 @@
 export default class Api {
-    constructor(
-        key = 'fc57bca5-e75f-42a0-83ef-a595f3326172',
-        baseUrl = 'https://mesto.nomoreparties.co/v1/cohort-26/') {
+    constructor(key,baseUrl) {
         this._key = key;
         this._baseUrl = baseUrl;
         this._then = res => {

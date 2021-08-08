@@ -2,8 +2,6 @@ import './pages/index.css';
 
 import {
     popupTypeEdit,
-    profileTitle,
-    profileSubtitle,
     profileEditBtn,
     nameInput,
     jobInput,
@@ -40,15 +38,13 @@ function createNewCard(item, myId) {
     return cardElement;
 }
 
-const api = new Api();
+const api = new Api('fc57bca5-e75f-42a0-83ef-a595f3326172', 'https://mesto.nomoreparties.co/v1/cohort-26/');
 
 Promise.all([api.getInitialMe(), api.getInitialCards()])
     .then(([userData, cardData]) => {
-        console.log(userData)
         const myId = userData._id;
         avatar.src = userData.avatar;
-        profileTitle.textContent = userData.name;
-        profileSubtitle.textContent = userData.about;
+        user.setUserInfo(userData);
 
         const cardsArr = cardData.reverse().map(item => {
             const container = {};
@@ -69,25 +65,23 @@ Promise.all([api.getInitialMe(), api.getInitialCards()])
         }, '.elements');
 
         cardList.renderItems();
-    })
-    .then(() => {
 
-        const formEdit = new PopupWithForm(popupTypeEdit, formSubmitHandler);
+        const formEdit = new PopupWithForm(popupTypeEdit, formEditSubmitHandler);
 
         profileEditBtn.addEventListener('click', openEditPopup);
+        formEdit.setEventListeners();
 
         function openEditPopup() {
             formEdit.openPopup();
-            formEdit.setEventListeners();
             const userInfo = user.getUserInfo();
             nameInput.value = userInfo.name;
-            jobInput.value = userInfo.job;
+            jobInput.value = userInfo.about;
         }
 
-        function formSubmitHandler(values) {
+        function formEditSubmitHandler(values) {
             editBtn.textContent = 'Сохранение...';
 
-            api.editeProfile(values.name, values.job)
+            api.editeProfile(values.name, values.about)
                 .then(() => {
                     user.setUserInfo(
                         values
@@ -102,6 +96,33 @@ Promise.all([api.getInitialMe(), api.getInitialCards()])
                 });
         }
 
+        const formAdd = new PopupWithForm(popupTypeNewCard, formEditSubmitHandler, formAddSubmitHandler);
+
+        function formAddSubmitHandler(values) {
+            addBtn.textContent = 'Сохранение...';
+            api.initialNewCard(
+                    values.place, values.image
+                )
+                .then(item => {
+                    cardList.addItem(createNewCard(item));
+                    formAdd.closePopup();
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    addBtn.textContent = 'Создать';
+                    addFormEl.disableButton();
+                });
+        }
+
+        addButton.addEventListener('click', openAddPopup);
+        formAdd.setEventListeners();
+
+        function openAddPopup() {
+            formAdd.openPopup();
+        }
+
     })
     .catch((err) => {
         console.log(err);
@@ -110,44 +131,8 @@ Promise.all([api.getInitialMe(), api.getInitialCards()])
 const editFormEl = new FormValidator(obj, popupTypeEdit);
 editFormEl.enableValidation();
 
-const formAdd = new PopupWithForm(popupTypeNewCard, formSubmitHandler);
-
-addButton.addEventListener('click', openAddPopup);
-
-function openAddPopup() {
-    formAdd.setEventListeners();
-    formAdd.openPopup();
-}
-
 const addFormEl = new FormValidator(obj, popupTypeNewCard);
 addFormEl.enableValidation();
-
-function formSubmitHandler(values) {
-    addBtn.textContent = 'Сохранение...';
-    api.initialNewCard(
-            values.place, values.image
-        )
-        .then(item => {
-            const cardList = new Section({
-                items: {
-                    item
-                },
-                renderer: (item) => {
-                    cardList.addItem(createNewCard(item));
-                }
-            }, '.elements');
-
-            cardList.addItem(createNewCard(item));
-            formAdd.closePopup();
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-        .finally(() => {
-            addBtn.textContent = 'Создать';
-            addFormEl.disableButton();
-        });
-}
 
 const avatarUserPopup = new PopupWithForm(popupTypeAvatar);
 avatar.addEventListener('click', openAvatarPopup);
@@ -189,19 +174,19 @@ function handleCardClick(data) {
 const accept = new PopupWithForm(popupTypeAccept);
 accept.setEventListeners();
 
-function handleLikeClick(cardElement, realLike, id) {
+function handleLikeClick(cardElement, id) {
     if (cardElement.querySelector('.elements__like_active') !== null) {
         api.addLike(id)
-            .then(() => {
-                cardElement.querySelector(likesCounterSelector).textContent = realLike + 1;
+            .then((data) => {
+                cardElement.querySelector(likesCounterSelector).textContent = data.likes.length;
             })
             .catch((err) => {
                 console.log(err);
             })
     } else {
         api.deleteLike(id)
-            .then(() => {
-                cardElement.querySelector(likesCounterSelector).textContent = realLike;
+            .then((data) => {
+                cardElement.querySelector(likesCounterSelector).textContent = data.likes.length;
             })
             .catch((err) => {
                 console.log(err);
