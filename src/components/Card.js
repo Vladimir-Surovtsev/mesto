@@ -50,7 +50,7 @@ export default class Card {
     _setEventListeners() {
         this._element.querySelector('.elements__like').addEventListener('click', () => {
             this._handleLikeIcon();
-            this._handleLikeClick(this._element, this._counter, this._id);
+            this._handleLikeClick(this._element, this._id);
         });
         this._element.querySelector('.elements__trash').addEventListener('click', () => {
             this.handleAccept(this._element, this._id);
