@@ -10,7 +10,7 @@ export default class Card {
         this._cardSelector = cardSelector;
         this.handleCardClick = handleCardClick;
         this.handleAccept = handleAccept;
-        this._handleLikeClick = handleLikeClick;
+        this.handleLikeClick = handleLikeClick;
     }
 
     getTemplate() {
@@ -49,8 +49,7 @@ export default class Card {
 
     _setEventListeners() {
         this._element.querySelector('.elements__like').addEventListener('click', () => {
-            this._handleLikeIcon();
-            this._handleLikeClick(this._element, this._id);
+            this.handleLikeClick(this._element, this._id);
         });
         this._element.querySelector('.elements__trash').addEventListener('click', () => {
             this.handleAccept(this._element, this._id);

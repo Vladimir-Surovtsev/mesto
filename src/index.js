@@ -178,7 +178,9 @@ function handleLikeClick(cardElement, id) {
     if (cardElement.querySelector('.elements__like_active') !== null) {
         api.addLike(id)
             .then((data) => {
+                console.log(data.likes.length)
                 cardElement.querySelector(likesCounterSelector).textContent = data.likes.length;
+                cardElement.querySelector('.elements__like').classList.toggle('elements__like_active');
             })
             .catch((err) => {
                 console.log(err);
@@ -186,7 +188,9 @@ function handleLikeClick(cardElement, id) {
     } else {
         api.deleteLike(id)
             .then((data) => {
+                console.log(data.likes.length)
                 cardElement.querySelector(likesCounterSelector).textContent = data.likes.length;
+                cardElement.querySelector('.elements__like').classList.toggle('elements__like_active');
             })
             .catch((err) => {
                 console.log(err);
